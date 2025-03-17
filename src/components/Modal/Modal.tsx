@@ -4,6 +4,7 @@ import React, {
   useRef,
   forwardRef,
   useImperativeHandle,
+  JSX,
 } from 'react'
 import FocusTrap from 'focus-trap-react'
 
@@ -52,11 +53,11 @@ export const ModalForwardRef: React.ForwardRefRenderFunction<
     ...divProps
   },
   ref
-): React.ReactElement => {
+): JSX.Element => {
   const { isOpen, toggleModal } = useModal(isInitiallyOpen)
   const [mounted, setMounted] = useState(false)
-  const initialPaddingRef = useRef<string>()
-  const tempPaddingRef = useRef<string>()
+  const initialPaddingRef = useRef<string>(undefined)
+  const tempPaddingRef = useRef<string>(undefined)
   const modalEl = useRef<HTMLDivElement>(null)
 
   const modalRootSelector = modalRoot || '.usa-modal-wrapper'
