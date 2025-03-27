@@ -6,10 +6,12 @@ on:
       - opened
       - edited
       - synchronize
+    branches:
+      - main
 
 jobs:
-  main:
-    name: lint
+  lint:
+    name: Validate PR title
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
@@ -17,3 +19,5 @@ jobs:
       - uses: amannn/action-semantic-pull-request@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          wip: false
